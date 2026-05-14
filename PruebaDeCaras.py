@@ -168,6 +168,29 @@ def mostrar_persona(indice):
     )
 
     # ==============================
+    # CLASIFICACION
+    # ==============================
+    if similitud > 90:
+
+        clasificacion = (
+            "Muy alta similitud "
+            "(posiblemente misma persona)"
+        )
+
+    elif similitud >= 75:
+
+        clasificacion = (
+            "Similitud media"
+        )
+
+    else:
+
+        clasificacion = (
+            "Baja similitud "
+            "(probablemente personas distintas)"
+        )
+
+    # ==============================
     # LANDMARKS
     # ==============================
     landmarks1 = cargar_json(
@@ -259,8 +282,8 @@ def mostrar_persona(indice):
     # ==============================
     plt.suptitle(
 
-        f"{persona['nombre']} | "
-        f"Similitud: {similitud}%\n\n"
+        f"{persona['nombre']}\n"
+        f"Similitud: {similitud}% {clasificacion}\n"
         f"A = Anterior | D = Siguiente",
 
         fontsize=16
