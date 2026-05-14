@@ -278,19 +278,39 @@ def mostrar_persona(indice):
     )
 
     # ==============================
-    # TITULO
+    # TITULO PRINCIPAL
     # ==============================
     plt.suptitle(
 
         f"{persona['nombre']}\n"
-        f"Similitud: {similitud}% {clasificacion}\n"
-        f"A = Anterior | D = Siguiente",
+        f"{clasificacion}, "
+        f"Similitud: ({similitud}%)",
 
         fontsize=16
 
     )
 
-    plt.tight_layout()
+    # ==============================
+    # TEXTO ABAJO
+    # ==============================
+    fig.text(
+
+        0.5,
+        0.02,
+
+        "Presiona: A = Anterior | D = Siguiente",
+
+        ha="center",
+
+        fontsize=12,
+
+        fontweight="bold"
+
+    )
+
+    plt.tight_layout(
+        rect=[0, 0.05, 1, 0.92]
+    )
 
     plt.draw()
 
