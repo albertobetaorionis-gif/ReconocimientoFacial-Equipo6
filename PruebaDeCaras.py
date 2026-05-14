@@ -142,17 +142,20 @@ def dibujar_grafo(
 # ==========================================
 def mostrar_persona(indice):
 
-    persona = personas[indice]
+    comparacion = comparaciones[indice]
+
+    entrada = comparacion["entrada"]
+    prueba = comparacion["prueba"]
 
     # ==============================
     # CARGAR GRAFOS
     # ==============================
     g1 = cargar_json(
-        persona["entrada_grafo"]
+        entrada["grafo"]
     )
 
     g2 = cargar_json(
-        persona["prueba_grafo"]
+        prueba["grafo"]
     )
 
     # ==============================
@@ -180,7 +183,8 @@ def mostrar_persona(indice):
     elif similitud >= 75:
 
         clasificacion = (
-            "Similitud media"
+            "Similitud media "
+            "(caso ambiguo o similar)"
         )
 
     else:
@@ -194,26 +198,26 @@ def mostrar_persona(indice):
     # LANDMARKS
     # ==============================
     landmarks1 = cargar_json(
-        persona["entrada_landmarks"]
+        entrada["landmarks"]
     )
 
     landmarks2 = cargar_json(
-        persona["prueba_landmarks"]
+        prueba["landmarks"]
     )
 
     # ==============================
-    # IMÁGENES
+    # IMAGENES
     # ==============================
     img1 = cargar_imagen(
-        persona["entrada_img"]
+        entrada["imagen"]
     )
 
     img2 = cargar_imagen(
-        persona["prueba_img"]
+        prueba["imagen"]
     )
 
     # ==============================
-    # LIMPIAR
+    # LIMPIAR FIGURA
     # ==============================
     plt.clf()
 
@@ -225,7 +229,7 @@ def mostrar_persona(indice):
     ax1.imshow(img1)
 
     ax1.set_title(
-        "Imagen Original 1"
+        f"Entrada\n{entrada['nombre']}"
     )
 
     ax1.axis("off")
@@ -238,7 +242,7 @@ def mostrar_persona(indice):
     ax2.imshow(img2)
 
     ax2.set_title(
-        "Imagen Original 2"
+        f"Prueba\n{prueba['nombre']}"
     )
 
     ax2.axis("off")
@@ -271,20 +275,18 @@ def mostrar_persona(indice):
 
         landmarks2["landmarks"],
 
-        g1["aristas"],
+        g2["aristas"],
 
         "Grafo Prueba"
 
     )
 
     # ==============================
-    # TITULO PRINCIPAL
+    # TITULO
     # ==============================
     plt.suptitle(
-
-        f"{persona['nombre']}\n"
-        f"{clasificacion}, "
-        f"Similitud: ({similitud}%)",
+        f"{clasificacion}\n"
+        f"Similitud: {similitud}%",
 
         fontsize=16
 
@@ -298,7 +300,7 @@ def mostrar_persona(indice):
         0.5,
         0.02,
 
-        "Presiona: A = Anterior | D = Siguiente",
+        "Presiona A = Anterior | D = Siguiente",
 
         ha="center",
 
@@ -329,7 +331,7 @@ def teclado(event):
 
         indice_actual += 1
 
-        if indice_actual >= len(personas):
+        if indice_actual >= len(comparaciones):
 
             indice_actual = 0
 
@@ -346,7 +348,9 @@ def teclado(event):
 
         if indice_actual < 0:
 
-            indice_actual = len(personas) - 1
+            indice_actual = (
+                len(comparaciones) - 1
+            )
 
         mostrar_persona(
             indice_actual
@@ -361,92 +365,73 @@ personas = [
     {
         "nombre": "Alberto Castillo",
 
-        "entrada_grafo":
+        "grafo":
         "Entradas/Grafos/grafoEntradaAlbertoCastillo.json",
 
-        "prueba_grafo":
-        "Pruebas/Grafos/grafoPruebaAlbertoCastillo.json",
-
-        "entrada_landmarks":
+        "landmarks":
         "Entradas/Landmarks/landmarkEntradaAlbertoCastillo.json",
 
-        "prueba_landmarks":
-        "Pruebas/Landmarks/landmarkPruebaAlbertoCastillo.json",
-
-        "entrada_img":
-        r"AlbertoCastillo\CaraAlbertoCastillo.jpg",
-
-        "prueba_img":
-        r"AlbertoCastillo\PruebaAlbertoCastillo.jpg"
+        "imagen":
+        r"AlbertoCastillo\CaraAlbertoCastillo.jpg"
     },
 
     {
         "nombre": "Carlos Meza",
 
-        "entrada_grafo":
+        "grafo":
         "Entradas/Grafos/grafoEntradaCarlosMeza.json",
 
-        "prueba_grafo":
-        "Pruebas/Grafos/grafoPruebaCarlosMeza.json",
-
-        "entrada_landmarks":
+        "landmarks":
         "Entradas/Landmarks/landmarkEntradaCarlosMeza.json",
 
-        "prueba_landmarks":
-        "Pruebas/Landmarks/landmarkPruebaCarlosMeza.json",
-
-        "entrada_img":
-        r"CarlosMeza\CaraCarlosMeza.jpg",
-
-        "prueba_img":
-        r"CarlosMeza\PruebaCarlosMeza.jpg"
+        "imagen":
+        r"CarlosMeza\CaraCarlosMeza.jpg"
     },
 
     {
         "nombre": "Darío Rabago",
 
-        "entrada_grafo":
+        "grafo":
         "Entradas/Grafos/grafoEntradaDarioRabago.json",
 
-        "prueba_grafo":
-        "Pruebas/Grafos/grafoPruebaDarioRabago.json",
-
-        "entrada_landmarks":
+        "landmarks":
         "Entradas/Landmarks/landmarkEntradaDarioRabago.json",
 
-        "prueba_landmarks":
-        "Pruebas/Landmarks/landmarkPruebaDarioRabago.json",
-
-        "entrada_img":
-        r"DarioRabago\CaraDarioRabago.jpg",
-
-        "prueba_img":
-        r"DarioRabago\PruebaDarioRabago.jpg"
+        "imagen":
+        r"DarioRabago\CaraDarioRabago.jpg"
     },
 
     {
         "nombre": "Miguel Núñez",
 
-        "entrada_grafo":
+        "grafo":
         "Entradas/Grafos/grafoEntradaMiguelNunez.json",
 
-        "prueba_grafo":
-        "Pruebas/Grafos/grafoPruebaMiguelNunez.json",
-
-        "entrada_landmarks":
+        "landmarks":
         "Entradas/Landmarks/landmarkEntradaMiguelNunez.json",
 
-        "prueba_landmarks":
-        "Pruebas/Landmarks/landmarkPruebaMiguelNunez.json",
-
-        "entrada_img":
-        r"MiguelNunez\CaraMiguelNunez.jpg",
-
-        "prueba_img":
-        r"MiguelNunez\PruebaMiguelNunez.jpg"
+        "imagen":
+        r"MiguelNunez\CaraMiguelNunez.jpg"
     }
 
 ]
+
+
+# ==========================================
+# GENERAR TODAS LAS COMPARACIONES
+# ==========================================
+comparaciones = []
+
+for persona1 in personas:
+
+    for persona2 in personas:
+
+        comparaciones.append({
+
+            "entrada": persona1,
+            "prueba": persona2
+
+        })
 
 
 # ==========================================
