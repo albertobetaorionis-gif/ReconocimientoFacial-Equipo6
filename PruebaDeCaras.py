@@ -151,11 +151,11 @@ def mostrar_persona(indice):
     # CARGAR GRAFOS
     # ==============================
     g1 = cargar_json(
-        entrada["grafo"]
+        entrada["entrada_grafo"]
     )
 
     g2 = cargar_json(
-        prueba["grafo"]
+        prueba["prueba_grafo"]
     )
 
     # ==============================
@@ -198,57 +198,57 @@ def mostrar_persona(indice):
     # LANDMARKS
     # ==============================
     landmarks1 = cargar_json(
-        entrada["landmarks"]
+        entrada["entrada_landmarks"]
     )
 
     landmarks2 = cargar_json(
-        prueba["landmarks"]
+        prueba["prueba_landmarks"]
     )
 
     # ==============================
     # IMAGENES
     # ==============================
     img1 = cargar_imagen(
-        entrada["imagen"]
+        entrada["entrada_img"]
     )
 
     img2 = cargar_imagen(
-        prueba["imagen"]
+        prueba["prueba_img"]
     )
 
     # ==============================
-    # LIMPIAR FIGURA
+    # LIMPIAR
     # ==============================
     plt.clf()
 
     # ==============================
-    # IMAGEN 1
+    # IMAGEN IZQUIERDA
     # ==============================
     ax1 = plt.subplot(2, 2, 1)
 
     ax1.imshow(img1)
 
     ax1.set_title(
-        f"Entrada\n{entrada['nombre']}"
+        f"Imagen de Entrada:"
     )
 
     ax1.axis("off")
 
     # ==============================
-    # IMAGEN 2
+    # IMAGEN DERECHA
     # ==============================
     ax2 = plt.subplot(2, 2, 2)
 
     ax2.imshow(img2)
 
     ax2.set_title(
-        f"Prueba\n{prueba['nombre']}"
+        f"Imagen de Prueba:"
     )
 
     ax2.axis("off")
 
     # ==============================
-    # GRAFO 1
+    # GRAFO IZQUIERDO
     # ==============================
     ax3 = plt.subplot(2, 2, 3)
 
@@ -260,12 +260,12 @@ def mostrar_persona(indice):
 
         g1["aristas"],
 
-        "Grafo Entrada"
+        "Grafo de Entrada"
 
     )
 
     # ==============================
-    # GRAFO 2
+    # GRAFO DERECHO
     # ==============================
     ax4 = plt.subplot(2, 2, 4)
 
@@ -277,7 +277,7 @@ def mostrar_persona(indice):
 
         g2["aristas"],
 
-        "Grafo Prueba"
+        "Grafo de Prueba"
 
     )
 
@@ -365,60 +365,96 @@ personas = [
     {
         "nombre": "Alberto Castillo",
 
-        "grafo":
+        "entrada_grafo":
         "Entradas/Grafos/grafoEntradaAlbertoCastillo.json",
 
-        "landmarks":
+        "entrada_landmarks":
         "Entradas/Landmarks/landmarkEntradaAlbertoCastillo.json",
 
-        "imagen":
-        r"AlbertoCastillo\CaraAlbertoCastillo.jpg"
+        "entrada_img":
+        r"AlbertoCastillo\CaraAlbertoCastillo.jpg",
+
+        "prueba_grafo":
+        "Pruebas/Grafos/grafoPruebaAlbertoCastillo.json",
+
+        "prueba_landmarks":
+        "Pruebas/Landmarks/landmarkPruebaAlbertoCastillo.json",
+
+        "prueba_img":
+        r"AlbertoCastillo\PruebaAlbertoCastillo.jpg"
     },
 
     {
         "nombre": "Carlos Meza",
 
-        "grafo":
+        "entrada_grafo":
         "Entradas/Grafos/grafoEntradaCarlosMeza.json",
 
-        "landmarks":
+        "entrada_landmarks":
         "Entradas/Landmarks/landmarkEntradaCarlosMeza.json",
 
-        "imagen":
-        r"CarlosMeza\CaraCarlosMeza.jpg"
+        "entrada_img":
+        r"CarlosMeza\CaraCarlosMeza.jpg",
+
+        "prueba_grafo":
+        "Pruebas/Grafos/grafoPruebaCarlosMeza.json",
+
+        "prueba_landmarks":
+        "Pruebas/Landmarks/landmarkPruebaCarlosMeza.json",
+
+        "prueba_img":
+        r"CarlosMeza\PruebaCarlosMeza.jpg"
     },
 
     {
         "nombre": "Darío Rabago",
 
-        "grafo":
+        "entrada_grafo":
         "Entradas/Grafos/grafoEntradaDarioRabago.json",
 
-        "landmarks":
+        "entrada_landmarks":
         "Entradas/Landmarks/landmarkEntradaDarioRabago.json",
 
-        "imagen":
-        r"DarioRabago\CaraDarioRabago.jpg"
+        "entrada_img":
+        r"DarioRabago\CaraDarioRabago.jpg",
+
+        "prueba_grafo":
+        "Pruebas/Grafos/grafoPruebaDarioRabago.json",
+
+        "prueba_landmarks":
+        "Pruebas/Landmarks/landmarkPruebaDarioRabago.json",
+
+        "prueba_img":
+        r"DarioRabago\PruebaDarioRabago.jpg"
     },
 
     {
         "nombre": "Miguel Núñez",
 
-        "grafo":
+        "entrada_grafo":
         "Entradas/Grafos/grafoEntradaMiguelNunez.json",
 
-        "landmarks":
+        "entrada_landmarks":
         "Entradas/Landmarks/landmarkEntradaMiguelNunez.json",
 
-        "imagen":
-        r"MiguelNunez\CaraMiguelNunez.jpg"
+        "entrada_img":
+        r"MiguelNunez\CaraMiguelNunez.jpg",
+
+        "prueba_grafo":
+        "Pruebas/Grafos/grafoPruebaMiguelNunez.json",
+
+        "prueba_landmarks":
+        "Pruebas/Landmarks/landmarkPruebaMiguelNunez.json",
+
+        "prueba_img":
+        r"MiguelNunez\PruebaMiguelNunez.jpg"
     }
 
 ]
 
 
 # ==========================================
-# GENERAR TODAS LAS COMPARACIONES
+# GENERAR COMPARACIONES
 # ==========================================
 comparaciones = []
 
